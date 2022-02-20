@@ -1,0 +1,26 @@
+Setlist {
+    background-color: #fcfaf5;
+    font-family: Century, serif;
+    margin: 40px;
+}
+
+Artist,Title,Genres,Year {
+    display: block;
+}
+
+Song {
+    margin: 0px 0px 20px 0px;
+    display: block;
+}
+
+Title {
+    font-size: 26px;
+}
+
+Genre:after {
+    content: ", "
+}
+
+Genre:last-child:after {
+    content: "";
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<Setlist>
+    <Song>
+        <Title>Brown Eyed Girl</Title>
+        <Artist>Van Morrison</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1967</Year>
+    </Song>
+    <Song>
+        <Title>Sweet Home Alabama</Title>
+        <Artist>Lynyrd Skynyrd</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1974</Year>
+    </Song>
+    <Song>
+        <Title>Rolling in the Deep</Title>
+        <Artist>Adele</Artist>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Soul</Genre>
+        </Genres>
+        <Year>1967</Year>
+    </Song>
+    <Song>
+        <Title>Hotel California</Title>
+        <Artist>Eagles</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1977</Year>
+    </Song>
+    <Song>
+        <Title>Wonderful Tonight</Title>
+        <Artist>Eric Clapton</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+            <Genre>Blues</Genre>
+        </Genres>
+        <Year>1977</Year>
+    </Song>
+    <Song>
+        <Title>Folsom Prison Blues</Title>
+        <Artist>Johnny Cash</Artist>
+        <Genres>
+            <Genre>Country</Genre>
+            <Genre>Folk</Genre>
+        </Genres>
+        <Year>1955</Year>
+    </Song>
+    <Song>
+        <Title>Take It Easy</Title>
+        <Artist>Eagles</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+            <Genre>Country</Genre>
+        </Genres>
+        <Year>1972</Year>
+    </Song>
+    <Song>
+        <Title>Get Lucky</Title>
+        <Artist>Daft Punk</Artist>
+        <Genres>
+            <Genre>Electronic</Genre>
+            <Genre>Disco</Genre>
+            <Genre>Funk</Genre>
+        </Genres>
+        <Year>2013</Year>
+    </Song>
+    <Song>
+        <Title>Born to Be Wild</Title>
+        <Artist>Steppenwolf</Artist>
+        <Genres>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1968</Year>
+    </Song>
+    <Song>
+        <Title>Superstition</Title>
+        <Artist>Stevie Wonder</Artist>
+        <Genres>
+            <Genre>Funk</Genre>
+            <Genre>Soul</Genre>
+            <Genre>Motown</Genre>
+        </Genres>
+        <Year>1972</Year>
+    </Song>
+</Setlist>
