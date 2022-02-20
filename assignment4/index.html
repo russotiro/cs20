@@ -1,14 +1,41 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>CS 20 Assignment 1</title>
-</head>
-<body>
-    <p>Name: Russell</p>
-    <p>Major: Computer Science</p>
-    <p>IP address: 130.64.35.17</p>
-    <p>I grew up in Duxbury, MA.</p>
-    <p>Something no one would expect about me: I lived in 4 different towns as a toddler.</p>
-    <p>My favorite place:</p>
-    <img src="marshfield.jpg" alt="Grassy field in Marshfield, MA.">
-</body>
+    <head>
+        <title>Joe's Hotdog Stand</title>
+        <style>
+            body {
+                font-family: Century, serif;
+                line-height: 1.5;
+                background-color: #fcfaf5;
+            }
+        </style>
+    </head>
+    <body>
+        <script language="javascript">
+            numHotdogs = prompt("How many hot dogs would you like?","");
+            numFries = prompt("How many orders of fries would you like?","");
+            numSodas = prompt("How many sodas would you like?","");
+            subtotal = 3.75 * numHotdogs + 2 * numFries + 1.8 * numSodas;
+
+            // Joe's special offer
+            discount = 0;
+            if (subtotal >= 20) {
+                discount = subtotal * 0.1;
+                subtotal *= 0.9;
+            }
+
+            tax = subtotal * 0.0625;
+            total = subtotal + tax;
+
+            document.write("Hot dogs purchased: " + numHotdogs + '<br/>');
+            document.write("Fries purchased: " + numFries + '<br/>');
+            document.write("Sodas purchased: " + numSodas + '<br/>');
+            if (discount > 0) {
+                document.write("Discount: $" + discount.toFixed(2) + '<br/>');
+            }
+            document.write("Subtotal: $" + subtotal.toFixed(2) + '<br/>');
+            document.write("Tax: $" + tax.toFixed(2) + '<br/>');
+            document.write("Total: $" + total.toFixed(2) + '<br/>');
+        </script>
+    </body>
 </html>
