@@ -1,0 +1,71 @@
+[
+    {
+        "title" : "Brown Eyed Girl",
+        "artist" : "Van Morrison",
+        "genres" : ["Rock"],
+        "year" : 1967
+    },
+
+    {
+        "title" : "Sweet Home Alabama",
+        "artist" : "Lynyrd Skynyrd",
+        "genres" : ["Rock"],
+        "year" : 1974
+    },
+
+    {
+        "title" : "Rolling in the Deep",
+        "artist" : "Adele",
+        "genres" : ["Pop", "Soul"],
+        "year" : 2011
+    },
+
+    {
+        "title" : "Hotel California",
+        "artist" : "Eagles",
+        "genres" : ["Rock"],
+        "year" : 1977
+    },
+
+    {
+        "title" : "Wonderful Tonight",
+        "artist" : "Eric Clapton",
+        "genres" : ["Rock", "Blues"],
+        "year" : 1977
+    },
+
+    {
+        "title" : "Folsom Prison Blues",
+        "artist" : "Johnny Cash",
+        "genres" : ["Country", "Folk"],
+        "year" : 1955
+    },
+
+    {
+        "title" : "Take It Easy",
+        "artist" : "Eagles",
+        "genres" : ["Rock", "Country"],
+        "year" : 1972
+    },
+
+    {
+        "title" : "Get Lucky",
+        "artist" : "Daft Punk",
+        "genres" : ["Electronic", "Disco", "Funk"],
+        "year" : 2013
+    },
+
+    {
+        "title" : "Born to Be Wild",
+        "artist" : "Steppenwolf",
+        "genres" : ["Rock"],
+        "year" : 1968
+    },
+
+    {
+        "title" : "Superstition",
+        "artist" : "Stevie Wonder",
+        "genres" : ["Funk", "Soul", "Motown"],
+        "year" : 1972
+    }
+]
