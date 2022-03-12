@@ -6,8 +6,9 @@
     </head>
     <body>
         <script>
-            $.getJSON("songs.json", function(json) {
-                document.write(json);
+            songs_obj = $.getJSON("https://www.russotiro.com/cs20/assignment8/songs.json", function() {
+                songs_str = JSON.stringify(songs_obj);
+                document.write(songs_str);
             })
         </script>
     </body>
