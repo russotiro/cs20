@@ -4,8 +4,11 @@
         <title>CS 20 Assignment 8</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <style>
-            body {
+            body,button,select {
                 font-family: "Century Schoolbook", Century, serif;
+            }
+
+            body {
                 margin: 20px;
                 background-color: #cadfde;
             }
@@ -23,36 +26,88 @@
                 border: none;
                 background-color: #ff8888;
             }
+
+            button {
+                background-color: #ff8888;
+                font-size: 12pt;
+                border: solid 2px black;
+                border-radius: 5px;
+            }
+
+            button:hover {
+                transition: 0.3s;
+                background-color: #ffcccc;
+            }
         </style>
     </head>
     <body>
         <script>
             $.getJSON("https://www.russotiro.com/cs20/assignment8/songs.json",
-            function(json) {
-                songs_str = JSON.stringify(json);
-                $(".stringification").html(songs_str);
+            function(songs) {
+                songsStr = JSON.stringify(songs);
+                $(".stringification").html(songsStr);
 
-                display_str = "<h1>User-friendly display:</h1><hr><br />";
-                json.forEach(function(song) {
-                    display_str += "<span class=\"title\">" + song.title +
-                                   "</span>" +
-                                   "<p>by " + song.artist + "<br />" +
-                                   "Genre: ";
-                    song.genres.forEach(function(genre) {
-                        display_str += genre + ", ";
-                    })
-                    display_str =
-                              display_str.substring(0, display_str.length - 2);
-                    display_str += "<br />Released in " + song.year +
-                                   "</p><br /><hr><br />";
+                allGenres = new Set();
+
+                displayStr = "<hr /><br />";
+                songs.forEach(displaySongInfo);
+                $("div.user-friendly").html(displayStr);
+
+                // for genre filtering
+                dropdownHTML = "";
+                allGenres.forEach(function(genre) {
+                    dropdownHTML += "<option>" + genre + "</option>";
                 })
-                $("div.user-friendly").html(display_str);
+                $("#genre").html(dropdownHTML);
             })
+
+            function filterBy(desiredGenre) {
+                songs = JSON.parse(songsStr);
+                displaySong = false;
+                displayStr = "<br /><br /><hr /><br />";
+                songs.forEach(function(song) {
+                    song.genres.forEach(function(genre) {
+                        if (genre == desiredGenre)
+                            displaySong = true;
+                    })
+                    if (displaySong)
+                        displaySongInfo(song);
+                    displaySong = false;
+                })
+
+                $("div.genre-filtered").html(displayStr);
+            }
+
+            function displaySongInfo(song) {
+                displayStr += "<span class=\"title\">" + song.title +
+                              "</span>" +
+                              "<p>by " + song.artist + "<br />" +
+                              "Genre: ";
+                song.genres.forEach(function(genre) {
+                    displayStr += genre + ", ";
+                    allGenres.add(genre);
+                })
+                displayStr =
+                            displayStr.substring(0, displayStr.length - 2);
+                displayStr += "<br />Released in " + song.year +
+                              "</p><br /><hr /><br />";
+            }
         </script>
         <h1>Stringified JSON object:</h1>
         <div class="stringification">
         </div>
+        <h1>User-friendly display:</h1>
         <div class="user-friendly">
+        </div>
+        <h1>Filter by genre:</h1>
+        <form name="filter-genre">
+            <select id="genre" name="genre">
+            </select><br /><br />
+            <button type="button"
+                    onclick="filterBy(genre.value)">Filter</button>
+        </form>
+        <div class="genre-filtered">
+
         </div>
     </body>
 </html>
