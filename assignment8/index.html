@@ -3,13 +3,56 @@
     <head>
         <title>CS 20 Assignment 8</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+            body {
+                font-family: "Century Schoolbook", Century, serif;
+                margin: 20px;
+                background-color: #cadfde;
+            }
+
+            div.stringification {
+                margin-bottom: 60px;
+            }
+
+            span.title {
+                font-size: 18pt;
+            }
+
+            hr {
+                height: 3px;
+                border: none;
+                background-color: #ff8888;
+            }
+        </style>
     </head>
     <body>
         <script>
-            songs_obj = $.getJSON("https://www.russotiro.com/cs20/assignment8/songs.json", function() {
-                songs_str = JSON.stringify(songs_obj);
-                document.write(songs_str);
+            $.getJSON("https://www.russotiro.com/cs20/assignment8/songs.json",
+            function(json) {
+                songs_str = JSON.stringify(json);
+                $(".stringification").html(songs_str);
+
+                display_str = "<h1>User-friendly display:</h1><hr><br />";
+                json.forEach(function(song) {
+                    display_str += "<span class=\"title\">" + song.title +
+                                   "</span>" +
+                                   "<p>by " + song.artist + "<br />" +
+                                   "Genre: ";
+                    song.genres.forEach(function(genre) {
+                        display_str += genre + ", ";
+                    })
+                    display_str =
+                              display_str.substring(0, display_str.length - 2);
+                    display_str += "<br />Released in " + song.year +
+                                   "</p><br /><hr><br />";
+                })
+                $("div.user-friendly").html(display_str);
             })
         </script>
+        <h1>Stringified JSON object:</h1>
+        <div class="stringification">
+        </div>
+        <div class="user-friendly">
+        </div>
     </body>
 </html>
