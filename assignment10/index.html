@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CS 20 Assignment 10</title>
+        <style>
+            body {
+                font-family: "Century Schoolbook", Century, serif;
+                margin: 20px;
+                background-color: #eeeeff;
+            }
+
+            span.code {
+                font-family: Consolas, monospace;
+            }
+
+            h2 {
+                font-size: 16pt;
+            }
+
+            hr {
+                height: 3px;
+                border: none;
+                background-color: #ff8888;
+                margin: 40px 0px;
+            }
+
+            ol {
+                width: 100%;
+                max-width: 600px;
+            }
+
+            div.additional-content li {
+                margin: 20px 0px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            function getRates() {
+                request = new XMLHttpRequest();
+                console.log("1 - request created");
+
+                request.open("GET",
+                             "https://api.coinbase.com/v2/exchange-rates",
+                             true);
+                console.log("2 - opened request");
+
+                request.onreadystatechange = function () {
+                    console.log("3 - onreadystatechange triggered");
+
+                    if (request.readyState == 4 && request.status == 200) {
+                        console.log("5 - response received");
+                        exchangeStr = request.responseText;
+                        rates = JSON.parse(exchangeStr);
+
+                        $("div.request #gbp")
+                         .html(parseFloat(rates.data.rates.GBP).toFixed(2));
+                        $("div.request #eur")
+                         .html(parseFloat(rates.data.rates.EUR).toFixed(2));
+                        $("div.request #yen")
+                         .html(parseFloat(rates.data.rates.CNY).toFixed(2));
+                    }
+                }
+
+                request.send();
+                console.log("4 - request sent");
+            }
+        </script>
+        <script>
+            res = fetch("https://api.coinbase.com/v2/exchange-rates?currency=CAD")
+                .then(res => res.text())
+                .then(rates => {
+                    rates = JSON.parse(rates);
+                    $("div.fetch #usd")
+                     .html(parseFloat(rates.data.rates.USD).toFixed(2));
+                    $("div.fetch #eur")
+                     .html(parseFloat(rates.data.rates.EUR).toFixed(2));
+                    $("div.fetch #yen")
+                     .html(parseFloat(rates.data.rates.CNY).toFixed(2));
+                })
+                .catch(error => console.log(error));
+        </script>
+    </head>
+    <body onload="getRates()">
+        <h1>Currency Information</h1>
+        <div class="request">
+            <h2>Using the <span class="code">XMLHttpRequest</span>:</h2>
+            <p>At the moment, $1 U.S. is equivalent to:</p>
+            <ul>
+                <li>&#163;<span id="gbp"></span></li>
+                <li><span id="eur"></span>&#128;</li>
+                <li><span id="yen"></span>&yen;RMB</li>
+            </ul>
+        </div>
+        <hr />
+        <div class="fetch">
+            <h2>Using <span class="code">fetch()</span>:</h2>
+            <p>At the moment, $1 Canadian is equivalent to:</p>
+            <ul>
+                <li>$<span id="usd"></span> U.S.</li>
+                <li><span id="eur"></span>&#128;</li>
+                <li><span id="yen"></span>&yen;RMB</li>
+            </ul>
+        </div>
+        <hr />
+        <div class="additional-content">
+            <h2>Additional Content</h2>
+            <ol>
+                <li>I selected the CoinBase API, which provides the exchange rates for currencies around the world. In the query string of the API request URL, the developer can specify the currency that the exchange rates are based on.</li>
+                <li>I found this API in the following article: <a href="https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/">https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/</a></li>
+                <li>For the XMLHttpRequest, I used no options. When this API receives no options, it defaults to exchange rates for U.S. dollars. For fetch(), I used option currency=CAD, which causes the API to return exchange rates for Canadian dollars.</li>
+                <li>This API would be helpful for someone traveling internationally who needs to know the exchange rate between their home country's currency and the currency of the country they're traveling to. This API would also be useful for a business manager who needs to set prices for their business in another country.</li>
+            </ol>
+        </div>
+    </body>
+</html>
